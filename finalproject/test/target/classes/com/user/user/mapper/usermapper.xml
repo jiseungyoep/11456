@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.user.user.mapper.UserMapper">
+	<insert id="insert" parameterType="User" keyProperty="id">
+		insert into
+		user_db(id, user_id, password, email, name, birth_date, phone_number, authorized)
+		values(#{id}, #{user_id}, #{password}, #{totalemail}, #{name}, #{birth_date}, #{phone_number}, #{authorized})
+	</insert>
+	
+	<select id="selectById" resultType="User">
+	    select user_id from user_db where user_id = #{user_id}
+	</select>
+	
+	<select id="findid" resultType="User">
+	    select user_id from user_db where email = #{email} and name = #{name}
+	</select>
+	
+	<select id="findpassword" resultType="User">
+	   select password from user_db where email = #{email} and user_id = #{user_id}
+	</select>
+	
+	<select id="login" resultType="User">
+	   select user_id, password from user_db where user_id = #{user_id} and password = #{password}
+	   
+	</select>
+	
+</mapper>
